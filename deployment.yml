@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: randn-gen
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: randn-gen
+    spec:
+      containers:
+      - name: randn-gen
+        image: rand-gen:v1
+        ports:
+        - containerPort: 8888
+  selector:
+    matchLabels:
+      app: randn-gen
